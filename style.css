@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #253047;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: #17243b;
+    color: white;
+    padding: 25px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 45px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    font-size: 28px;
+}
+
+.menu-heading {
+    color: #91a0b8;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin: 0 12px 15px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #d5deec;
+    padding: 13px 12px;
+    border-radius: 9px;
+    transition: 0.25s;
+}
+
+.nav-menu a:hover {
+    background: #2d4263;
+    color: white;
+    transform: translateX(4px);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    color: #91a0b8;
+    font-size: 12px;
+    padding: 20px 5px 0;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.topbar {
+    background: white;
+    padding: 22px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px #17243b0d;
+}
+
+.topbar h2 {
+    font-size: 23px;
+}
+
+.topbar p {
+    color: #8490a3;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.profile {
+    background: #f0f4fa;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+.page-content {
+    padding: 32px;
+}
+
+.footer {
+    padding: 20px 32px;
+    color: #8994a6;
+    font-size: 12px;
+}
+
+.alert {
+    padding: 14px 18px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+}
+
+.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+button, .btn {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover, .btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+input, select {
+    padding: 11px;
+    border: 1px solid #d6deea;
+    border-radius: 7px;
+    width: 100%;
+    margin: 7px 0 15px;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #93c5fd;
+    border-color: #2563eb;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #edf0f5;
+}
+
+th {
+    background: #edf3fc;
+}
+
+@media (max-width: 750px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .nav-menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .topbar {
+        padding: 18px;
+    }
+
+    .page-content {
+        padding: 18px;
+    }
+}
+.profile-container {
+    position: relative;
+}
+
+.profile {
+    background: #edf3fc;
+    color: #253047;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px #0002;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.profile-dropdown.show {
+    display: block;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 13px 15px;
+    text-decoration: none;
+    color: #253047;
+}
+
+.profile-dropdown a:hover {
+    background: #edf3fc;
+}
+/* Books page */
+
+.book-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0 18px;
+}
+
+.book-toolbar h2 {
+    font-size: 20px;
+}
+
+.book-toolbar p {
+    color: #8994a6;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.search-input {
+    max-width: 300px;
+    background: white;
+    padding: 13px;
+}
+
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 650px;
+    box-shadow: 0 3px 15px #17243b0a;
+}
+
+.form-card label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.form-card button {
+    margin-top: 10px;
+}
+
+#booksTable tbody tr:hover {
+    background: #f5f8fd;
+}
+
+@media (max-width: 600px) {
+    .book-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input {
+        max-width: 100%;
+    }
+}
+.form-card select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #dce1e8;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+}
+
+.form-card select:focus,
+.form-card input:focus {
+    outline: none;
+    border-color: #4776e6;
+    box-shadow: 0 0 0 3px rgba(71, 118, 230, 0.12);
+}
+
+.alert.success {
+    background: #e6f7ed;
+    color: #187443;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.alert.error {
+    background: #fdeaea;
+    color: #b42318;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.scanner-card {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.scanner-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.scanner-card h2 {
+    margin-bottom: 10px;
+}
+
+.scanner-card p {
+    color: #718096;
+    margin-bottom: 25px;
+}
+
+.scanner-card form {
+    text-align: left;
+}
+
+.scanner-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.scanner-card input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dce1e8;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.scanner-card button {
+    width: 100%;
+}
+
+.scan-result {
+    max-width: 750px;
+    margin: 25px auto;
+    padding: 20px;
+}
+
+.scan-result h2 {
+    margin-bottom: 15px;
+}

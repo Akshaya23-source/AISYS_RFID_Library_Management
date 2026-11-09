@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}RFID Scanner | AISYS Library{% endblock %}
+{% block page_heading %}RFID Scanner{% endblock %}
+
+{% block content %}
+
+<div class="welcome-banner">
+    <div>
+        <h1>📡 RFID Book Scanner</h1>
+        <p>Scan or enter a book's RFID tag to find its details.</p>
+    </div>
+    <span class="live-label">Scanner Interface</span>
+</div>
+
+<div class="scanner-card">
+    <div class="scanner-icon">📶</div>
+    <h2>Ready to Scan</h2>
+    <p>Enter an RFID tag below to identify a registered book.</p>
+
+    <form method="POST">
+        <label>RFID Tag Number</label>
+        <input
+            type="text"
+            name="rfid_tag"
+            placeholder="Example: RFID1001"
+            value="{{ rfid_tag or '' }}"
+            required
+        >
+        <button type="submit">🔍 Scan RFID Tag</button>
+    </form>
+</div>
+
+{% if error %}
+<div class="alert error">{{ error }}</div>
+{% endif %}
+
+{% if book %}
+<div class="table-container scan-result">
+    <h2>✅ Book Found</h2>
+    <table>
+        <tr><th>Book ID</th><td>{{ book["id"] }}</td></tr>
+        <tr><th>Title</th><td>{{ book["title"] }}</td></tr>
+        <tr><th>Author</th><td>{{ book["author"] or "-" }}</td></tr>
+        <tr><th>ISBN</th><td>{{ book["isbn"] or "-" }}</td></tr>
+        <tr><th>RFID Tag</th><td>{{ book["rfid_tag"] }}</td></tr>
+        <tr><th>Status</th><td>{{ book["status"] }}</td></tr>
+    </table>
+</div>
+{% endif %}
+
+{% endblock %}

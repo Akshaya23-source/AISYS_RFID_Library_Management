@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}RFID Registration | AISYS Library{% endblock %}
+{% block page_heading %}RFID Registration{% endblock %}
+
+{% block content %}
+
+<div class="welcome-banner">
+    <div>
+        <h1>📡 RFID Tag Registration</h1>
+        <p>Assign RFID tags to registered library books.</p>
+    </div>
+    <span class="live-label">RFID Management</span>
+</div>
+
+{% if message %}
+<div class="alert success">{{ message }}</div>
+{% endif %}
+
+{% if error %}
+<div class="alert error">{{ error }}</div>
+{% endif %}
+
+<div class="section-heading">
+    <h2>🔗 Assign RFID Tag</h2>
+    <p>Select a book and enter its RFID tag.</p>
+</div>
+
+<div class="form-card">
+    <form method="POST">
+
+        <label>Select Book *</label>
+        <select name="book_id" required>
+            <option value="">-- Choose a Book --</option>
+
+            {% for book in books %}
+            <option value="{{ book.id }}">
+                {{ book.title }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label>RFID Tag Number *</label>
+        <input
+            type="text"
+            name="rfid_tag"
+            placeholder="Enter RFID tag number"
+            required
+        >
+
+        <button type="submit">Assign RFID Tag</button>
+
+    </form>
+</div>
+
+{% endblock %}

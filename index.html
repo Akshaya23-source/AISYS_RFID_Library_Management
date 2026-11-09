@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home | AISYS Library{% endblock %}
+
+{% block page_heading %}Welcome to AISYS Library{% endblock %}
+
+{% block content %}
+
+<div class="welcome-card">
+    <h1>Welcome to the Smart Library 📚</h1>
+
+    <p>
+        Manage books, members, RFID registration,
+        book circulation and inventory in one place.
+    </p>
+
+    <br>
+
+    <a href="{{ url_for('main.dashboard') }}" class="btn">
+        Explore Dashboard →
+    </a>
+</div>
+
+{% endblock %}

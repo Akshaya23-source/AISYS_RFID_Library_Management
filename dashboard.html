@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            margin: 30px;
+        }
+
+        h1 {
+            color: #263b5e;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            width: 190px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+
+        .card h2 {
+            color: #263b5e;
+        }
+
+        table {
+            background: white;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #263b5e;
+            color: white;
+        }
+
+        a {
+            color: #263b5e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AISYS Library Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Books</h3>
+            <h2>{{ total_books }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Available Books</h3>
+            <h2>{{ available_books }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Issued Books</h3>
+            <h2>{{ issued_books_count }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Members</h3>
+            <h2>{{ total_members }}</h2>
+        </div>
+        <div class="section-heading">
+    <h2>📡 RFID Reader Status</h2>
+    <p>Monitor the RFID service connection.</p>
+</div>
+
+<div class="stat-card">
+    {% if rfid_status.connected %}
+        <h3 style="color: green;">● Connected</h3>
+    {% else %}
+        <h3 style="color: red;">● Disconnected</h3>
+    {% endif %}
+
+    <p>{{ rfid_status.reader_type }}</p>
+    <small>{{ rfid_status.message }}</small>
+</div>
+
+    </div>
+
+    <h2>Recent Book Transactions</h2>
+
+    <table>
+
+        <tr>
+            <th>Book</th>
+            <th>Member</th>
+            <th>Issue Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for record in recent_issues %}
+
+        <tr>
+            <td>{{ record.title }}</td>
+            <td>{{ record.name }}</td>
+            <td>{{ record.issued_at }}</td>
+            <td>{{ record.status }}</td>
+        </tr>
+
+        {% else %}
+
+        <tr>
+            <td colspan="4">No transactions available.</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/">Back to Home</a>
+
+</body>
+</html>

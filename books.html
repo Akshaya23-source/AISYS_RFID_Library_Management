@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Books | AISYS Library{% endblock %}
+
+{% block page_heading %}Book Management{% endblock %}
+
+{% block content %}
+
+<div class="welcome-banner">
+    <div>
+        <h1>📚 Book Collection</h1>
+        <p>Manage, search and register library books.</p>
+    </div>
+    <span class="live-label">Book Management</span>
+</div>
+
+<div class="book-toolbar">
+    <div>
+        <h2>All Books</h2>
+        <p>View your registered library collection.</p>
+    </div>
+
+    <input type="text"
+           id="bookSearch"
+           placeholder="🔍 Search books..."
+           class="search-input">
+</div>
+
+<div class="table-container">
+    <table id="booksTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>RFID Tag</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book["id"] }}</td>
+                <td>{{ book["title"] }}</td>
+                <td>{{ book["author"] or "-" }}</td>
+                <td>{{ book["isbn"] or "-" }}</td>
+                <td>{{ book["rfid_tag"] or "Not Assigned" }}</td>
+                <td>
+                    <span class="status-badge
+                    {% if book['status'] == 'Available' %}
+                        returned
+                    {% else %}
+                        issued
+                    {% endif %}">
+                        {{ book["status"] }}
+                    </span>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="empty-message">
+                    No books registered yet.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="section-heading">
+    <h2>➕ Add New Book</h2>
+    <p>Enter the book details below.</p>
+</div>
+
+<div class="form-card">
+    <form method="POST">
+
+        <label>Book Title *</label>
+        <input type="text" name="title"
+               placeholder="Enter book title" required>
+
+        <label>Author</label>
+        <input type="text" name="author"
+               placeholder="Enter author name">
+
+        <label>ISBN</label>
+        <input type="text" name="isbn"
+               placeholder="Enter ISBN">
+
+        <label>RFID Tag (Optional)</label>
+        <input type="text" name="rfid_tag"
+               placeholder="Enter RFID tag">
+
+        <button type="submit">Add Book</button>
+
+    </form>
+</div>
+
+{% endblock %}

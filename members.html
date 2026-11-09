@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Members | AISYS Library{% endblock %}
+{% block page_heading %}Member Management{% endblock %}
+
+{% block content %}
+
+<div class="welcome-banner">
+    <div>
+        <h1>👥 Library Members</h1>
+        <p>Register and manage library members.</p>
+    </div>
+    <span class="live-label">Member Management</span>
+</div>
+
+<div class="book-toolbar">
+    <div>
+        <h2>All Members</h2>
+        <p>View registered library members.</p>
+    </div>
+    <input type="text" id="memberSearch"
+           placeholder="🔍 Search members..."
+           class="search-input">
+</div>
+
+<div class="table-container">
+    <table id="membersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ member["id"] }}</td>
+                <td>{{ member["name"] }}</td>
+                <td>{{ member["email"] or "-" }}</td>
+                <td>{{ member["phone"] or "-" }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="empty-message">
+                    No members registered yet.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="section-heading">
+    <h2>➕ Register New Member</h2>
+    <p>Enter the member details below.</p>
+</div>
+
+<div class="form-card">
+    <form method="POST">
+
+        <label>Full Name *</label>
+        <input type="text" name="name"
+               placeholder="Enter full name" required>
+
+        <label>Email</label>
+        <input type="email" name="email"
+               placeholder="Enter email address">
+
+        <label>Phone Number</label>
+        <input type="text" name="phone"
+               placeholder="Enter phone number">
+
+        <button type="submit">Register Member</button>
+
+    </form>
+</div>
+
+{% endblock %}
